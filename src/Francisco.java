@@ -27,6 +27,7 @@ public class Francisco {
             cualidadesM = (cualidadesChicas.replace(" ", ""));
             cualidadesDeLasChicas.add(cualidadesM);
         }
+
         if (cantidadDeChicas <= 100
                 && cantidadDeChicas >= 1
                 && numeroDeCualidades <= 100
@@ -34,13 +35,15 @@ public class Francisco {
             for (int i = 0; i < cualidadesDeLasChicas.size(); i++) {
                 obtenerNumero(i);
             }
+
             System.out.println(contador);
+
         } else {
             System.exit(0);
         }
     }
 
-    public static int obtenerNumero(int i) {
+    public static void obtenerNumero(int i) {
         int contadorP = 0;
         for (int j = 0; j < numeroDeCualidades; j++) {
             if (cualidadesDeLasChicas.get(i).contains(cualidadesN.substring(j, j + 1))) {
@@ -48,10 +51,8 @@ public class Francisco {
                 if (contadorP == numeroDeCualidades) {
                     contador += 1;
                     contadorP = 0;
-                    j = 0;
                 }
             }
         }
-        return contador;
     }
 }
