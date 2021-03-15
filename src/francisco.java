@@ -3,8 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @Author
- * Brayan Camilo Moreno Romero
+ * @Author Brayan Camilo Moreno Romero
  * Miguel Angel Sierra Morales
  * Sergio Alejandro Hernandez Zambrano
  */
@@ -19,17 +18,17 @@ public class francisco {
 
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-        Scanner leer2 = new Scanner(System.in);
-        Scanner leer3 = new Scanner(System.in);
+
         cualidadesDeLasChicas = new ArrayList<>();
 
-        numeroDeCualidades = leer.nextInt();
-        String cualidades = leer2.nextLine();
+        String numCu = leer.nextLine();
+        numeroDeCualidades = Integer.parseInt(numCu.replace(" ", ""));
+        String cualidades = leer.nextLine();
         cualidadesN = cualidades.replace(" ", "");
-        cantidadDeChicas = leer.nextInt();
-
+        String canChi = leer.nextLine();
+        cantidadDeChicas = Integer.parseInt(canChi.replace(" ", ""));
         for (int i = 0; i < cantidadDeChicas; i++) {
-            String cualidadesChicas = leer3.nextLine();
+            String cualidadesChicas = leer.nextLine();
             cualidadesM = (cualidadesChicas.replace(" ", ""));
             cualidadesDeLasChicas.add(cualidadesM);
         }
