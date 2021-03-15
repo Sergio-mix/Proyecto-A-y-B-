@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Miguel Angel Sierra Morales
  * Sergio Alejandro Hernandez Zambrano
  */
-public class Francisco {
+public class francisco {
 
     public static int numeroDeCualidades;
     public static int cantidadDeChicas;
@@ -20,6 +20,7 @@ public class Francisco {
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
         Scanner leer2 = new Scanner(System.in);
+        Scanner leer3 = new Scanner(System.in);
         cualidadesDeLasChicas = new ArrayList<>();
 
         numeroDeCualidades = leer.nextInt();
@@ -28,7 +29,7 @@ public class Francisco {
         cantidadDeChicas = leer.nextInt();
 
         for (int i = 0; i < cantidadDeChicas; i++) {
-            String cualidadesChicas = leer2.nextLine();
+            String cualidadesChicas = leer3.nextLine();
             cualidadesM = (cualidadesChicas.replace(" ", ""));
             cualidadesDeLasChicas.add(cualidadesM);
         }
