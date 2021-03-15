@@ -1,8 +1,13 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @Author
+ * Brayan Camilo Moreno Romero
+ * Miguel Angel Sierra Morales
+ * Sergio Alejandro Hernandez Zambrano
+ */
 public class Francisco {
 
     public static int numeroDeCualidades;
@@ -32,6 +37,7 @@ public class Francisco {
                 && cantidadDeChicas >= 1
                 && numeroDeCualidades <= 100
                 && numeroDeCualidades >= 1) {
+
             for (int i = 0; i < cualidadesDeLasChicas.size(); i++) {
                 obtenerNumero(i);
             }
