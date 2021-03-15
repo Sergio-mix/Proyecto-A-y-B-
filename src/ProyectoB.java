@@ -9,7 +9,8 @@ public class ProyectoB {
         Estudiante estudiante;
 
         int nCubiculo = 0;
-        ArrayList<Integer> casilleros = new ArrayList<Integer>();
+        int casilleros[];
+
         int nCasilleros = 0;
         ArrayList<String> cedulas = new ArrayList<String>();
 
@@ -18,15 +19,22 @@ public class ProyectoB {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese cuantos cubiculos tiene: ");
         nCubiculo = entrada.nextInt();
+        casilleros = new int[nCubiculo];
 
-        for (int i = 1; i <= nCubiculo; i++) {
-            System.out.println("Ingrese el numero de casilleros que tiene el " + i + " cubiculo: ");
+        int contador = 1;
+        for (int i = 0; i < nCubiculo; i++) {
+
+            System.out.println("Ingrese el numero de casilleros que tiene el " + contador + " cubiculo: ");
             nCasilleros = entrada.nextInt();
-            casilleros.add(nCasilleros);
+            casilleros[i] = nCasilleros;
+            contador++;
         }
         System.out.println(nCubiculo);
-        for (int i = 0; i < casilleros.size(); i++) {
-            System.out.println(casilleros.get(i));
+        int contador2=1;
+        for (int i = 0; i < casilleros.length; i++) {
+
+            System.out.println("En el cubiculo " + contador2 + "Hay: " + casilleros[i] + "Casilleros");
+            contador2++;
         }
 
         Scanner entrada2 = new Scanner(System.in);
@@ -52,34 +60,31 @@ public class ProyectoB {
             int aux = 0;
             if (existe) {
 
-                for (int i = 0; i < casilleros.size(); i++) {
-                    if (casilleros.get(i) > 0) {
-                        aux = casilleros.get(i);
-                        aux += -1;
+                for (int i = 0; i < casilleros.length; i++) {
+                    if (casilleros[i] > 0) {
+                        aux = casilleros[i];
+                        aux -= 1;
                         System.out.println(aux);
 
-                    }else if(casilleros.get(i+1) >0){
-                        aux = casilleros.get(i+1);
-                        aux += -1;
-                        System.out.println(aux);
-                    }
-                    else System.out.println("No hay mas espacios");
+
+                    } else System.out.println("No hay mas espacios");
                 }
-            }
-            System.out.println("¿Que desea hacer?\n1.Volver al menu inicial\n2.Salir");
-            opcion1 = entrada.nextInt();
-            switch (opcion1) {
-                case 1:
-                    System.out.println("digite una opcion: \n**********************\n1.Ingresar usuario a casillero \n2.Retirar usuario de casillero\n3.Consultar usuario de casillero"
-                            + "\n4.salir");
-                    opcion = entrada.nextInt();
 
-                    break;
-                case 2:
-                    System.exit(0);
-                default:
-                    System.out.println("Por favor ingrese un valor valido");
+                System.out.println("¿Que desea hacer?\n1.Volver al menu inicial\n2.Salir");
+                opcion1 = entrada.nextInt();
+                switch (opcion1) {
+                    case 1:
+                        System.out.println("digite una opcion: \n**********************\n1.Ingresar usuario a casillero \n2.Retirar usuario de casillero\n3.Consultar usuario de casillero"
+                                + "\n4.salir");
+                        opcion = entrada.nextInt();
 
+                        break;
+                    case 2:
+                        System.exit(0);
+                    default:
+                        System.out.println("Por favor ingrese un valor valido");
+
+                }
             }
         } else if (opcion == 2) {
             System.out.println("Ingrese la cedula del usuario que quiere retirar: ");
@@ -125,31 +130,31 @@ public class ProyectoB {
 
 
     }
+}
 
+class Estudiante {
+    public String nombre = "";
+    public String apellido = "";
+    public String cedula = "";
 
-    static class Estudiante {
-        public String nombre = "";
-        public String apellido = "";
-        public String cedula = "";
+    public Estudiante(String nombre, String apellido, String cedula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+    }
+}
 
-        public Estudiante(String nombre, String apellido, String cedula) {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.cedula = cedula;
-        }
+class EstudianteDAO {
+    public ArrayList<Estudiante> aEstudiante;
+
+    public EstudianteDAO() {
+        aEstudiante = new ArrayList<Estudiante>();
     }
 
-    static class EstudianteDAO {
-        public ArrayList<Estudiante> aEstudiante;
-
-        public EstudianteDAO() {
-            aEstudiante = new ArrayList<Estudiante>();
-        }
-
-        public String agregarEstudiante(Estudiante estudiante) {
-            aEstudiante.add(estudiante);
-            return "Se ha registrado un estudiante";
-        }
+    public String agregarEstudiante(Estudiante estudiante) {
+        aEstudiante.add(estudiante);
+        return "Se ha registrado un estudiante";
+    }
 
 //        public Boolean ingresarUsuario(String cedula) {
 //            boolean existe = aEstudiante.contains(cedula);
@@ -160,5 +165,4 @@ public class ProyectoB {
 //            return existe;
 //        }
 
-    }
 }
