@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class gimnasio {
     public static int opcion;
     public static boolean salir;
-    public static List<Estudiantes> listaE;
+    public static List<Estudiante> listaE;
     public static Scanner leer;
     public static String matriz[][];
     public static int cubiculos;
@@ -18,7 +18,7 @@ public class gimnasio {
     public static String nombre;
     public static String apellido;
     public static String cedula;
-    private static Estudiantes estudiante;
+    private static Estudiante estudiante;
     public static String imprimirCase2;
     public static String imprimirCase3;
 
@@ -67,7 +67,7 @@ public class gimnasio {
 
 
                     if (cedulas(cedula)) {
-                        estudiante = new Estudiantes(nombre, apellido, cedula);
+                        estudiante = new Estudiante(nombre, apellido, cedula);
                         listaE.add(estudiante);
                         añadirEstudiante(nombre);
                         for (int k = 0; k < cubiculos; k++) {
@@ -111,20 +111,17 @@ public class gimnasio {
     public static void añadirEstudiante(String nombre) {
         int contador = 0;
         for (int i = 0; i < cubiculos; i++) {
-
             if (contador == 0) {
                 for (int j = 0; j < casilleros; j++) {
-                    if(numListRegistro()==0){
-
-
-                    if (matriz[i][j].equals("" + (i + 1) + "," + (j + 1) + "")) {
-                        matriz[i][j] = nombre;
-                        contador += 1;
-                        break;
-                    }
-                    }else{
-                        if (matriz[i+1][j].equals("" + (i+1 + 1) + "," + (j + 1) + "")) {
-                            matriz[i+1][j] = nombre;
+                    if (numListRegistro() == 1) {
+                        if (matriz[i][j].equals("" + (i + 1) + "," + (j + 1) + "")) {
+                            matriz[i][j] = nombre;
+                            contador += 1;
+                            break;
+                        }
+                    } else {
+                        if (matriz[i + formula()][j].equals("" + (i + (formula() + 1)) + "," + (j + 1) + "")) {
+                            matriz[i + formula()][j] = nombre;
                             contador += 1;
                             break;
                         }
@@ -204,40 +201,20 @@ public class gimnasio {
         }
 
     }
-    public static int formula(){
-        int var1 = cubiculos;
-        int listnum = 0;
 
-        for (int i=0; i<listaE.size();i++){
-            listnum+=1;
-
-        }
-        int resultado = cubiculos/listnum;
+    public static int formula() {
+        int resultado = casilleros / numListRegistro();
         return resultado;
     }
-    public static int numListRegistro(){
+
+    public static int numListRegistro() {
         int listnum = 0;
-
-        for (int i=0; i<=listaE.size();i++){
-            if (listaE.size()!=0){
-                listnum+=1;
+        if (listaE.size() != 0) {
+            for (int i = 0; i < listaE.size(); i++) {
+                listnum += 1;
             }
-
-
         }
         return listnum;
-    }
-}
-
-class Estudiantes {
-    public String nombre;
-    public String apellido;
-    public String cedula;
-
-    public Estudiantes(String nombre, String apellido, String cedula) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.cedula = cedula;
     }
 }
 
