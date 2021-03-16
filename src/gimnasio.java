@@ -27,10 +27,10 @@ public class gimnasio {
         salir = false;
         listaE = new ArrayList<>();
         leer = new Scanner(System.in);
-
-        cubiculos = leer.nextInt();
-
-        casilleros = leer.nextInt();
+        String cub = leer.nextLine();
+        cubiculos = Integer.parseInt(cub);
+        String cas = leer.nextLine();
+        casilleros = Integer.parseInt(cas);
         matriz = new String[cubiculos][casilleros];
 
         for (int i = 0; i < cubiculos; i++) {
@@ -53,9 +53,6 @@ public class gimnasio {
                 case 1:
                     nombre = "";
                     apellido = "";
-                    leer = new Scanner(System.in);
-
-
                     try {
                         cedula = leer.nextLine();
                         String nom = leer.nextLine();
