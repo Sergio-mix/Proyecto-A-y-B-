@@ -92,7 +92,6 @@ public class gimnasio {
                     break;
                 case 3:
                     cedula = "";
-                    leer = new Scanner(System.in);
                     cedula = leer.nextLine();
                     consultar(cedula);
                     System.out.println(imprimirCase3);
