@@ -8,6 +8,7 @@ import java.util.Scanner;
  * Sergio Alejandro Hernandez Zambrano
  */
 public class gimnasio {
+
     public static int opcion;
     public static List<Estudiantes>listaE;
     public static Scanner leer;
