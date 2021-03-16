@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Sergio Alejandro Hernandez Zambrano
  */
 public class gimnasio {
-
+    public static boolean case1Return = false;
     public static int opcion;
     public static boolean salir;
     public static List<Estudiantes> listaE;
@@ -19,7 +19,7 @@ public class gimnasio {
     public static String nombre;
     public static String apellido;
     public static String cedula;
-    private static Estudiante estudiante;
+    private static Estudiantes estudiante;
 
 
     public static void main(String[] args) {
@@ -64,20 +64,36 @@ public class gimnasio {
 
                     System.out.println("nombre" + nombre + " apellido" + apellido);
                     añadirEstudiante(nombre);
+                    for (int i = 0; i < listaE.size(); i++) {
+                        cedulas(i, cedula);
+                    }
+                    if (case1Return) {
+                        for (int k = 0; k < cubiculos; k++) {
+                            for (int j = 0; j < casilleros; j++) {
+                                System.out.println(matriz[k][j]);
 
+                            }
+                        }
+                    }
 
 //
-                    estudiante = new Estudiante(nombre, apellido, cedula);
+
+
+                    break;
+                case 2:
+                    cedula = "";
+                    leer = new Scanner(System.in);
+                    System.out.println("cedula");
+                    cedula = leer.nextLine();
+                    retirarUsuario(cedula);
 
                     for (int i = 0; i < cubiculos; i++) {
                         for (int j = 0; j < casilleros; j++) {
-                            System.out.println(matriz[i][j]);
+                            matriz[i][j] = "" + (i + 1) + "," + (j + 1) + "";
 
                         }
                     }
 
-                    break;
-                case 2:
 
                     break;
                 case 3:
@@ -121,15 +137,59 @@ public class gimnasio {
 
     }
 
-    class Estudiantes {
-        public String nombre;
-        public String apellido;
-        public String cedula;
+    public static void cedulas(int i, String cedula) {
+        if (cedula.length() == 10 && cedula.length() > 0 && !cedula.equals(listaE.get(i).cedula)) {
+            estudiante = new Estudiantes(nombre, apellido, cedula);
+            listaE.add(estudiante);
+            case1Return = true;
 
-        public Estudiantes(String nombre, String apellido, String cedula) {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.cedula = cedula;
         }
     }
+
+
+    public static String retirarUsuario(String cedula) {
+        int contador = 0;
+        String posicion = "";
+        for (int i = 0; i < listaE.size(); i++) {
+            if (cedula.equals(listaE.get(i).cedula)) {
+                posicion = listaE.get(i).nombre;
+            }
+
+        }
+        for (int i = 0; i < cubiculos; i++) {
+
+            if (contador == 0) {
+                for (int j = 0; j < casilleros; j++) {
+                    if (matriz[i][j] == posicion) {
+                        matriz[i][j] = "" + (i + 1) + "," + (j + 1) + "";
+                        contador += 1;
+
+                        break;
+
+                    } else {
+
+                    }
+
+                }
+
+            }
+
+
+        }
+
+       return "Se elimino" + posicion +"de cubiculo"+ cubiculos+"y casillero"+casilleros ;
+    }
 }
+
+class Estudiantes {
+    public String nombre;
+    public String apellido;
+    public String cedula;
+
+    public Estudiantes(String nombre, String apellido, String cedula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+    }
+}
+
