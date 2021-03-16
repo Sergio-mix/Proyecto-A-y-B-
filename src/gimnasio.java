@@ -78,7 +78,7 @@ public class gimnasio {
                     break;
                 case 2:
                     cedula = "";
-                    leer = new Scanner(System.in);
+
                     cedula = leer.nextLine();
                     retirar(cedula);
 
