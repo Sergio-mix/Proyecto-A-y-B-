@@ -114,10 +114,21 @@ public class gimnasio {
 
             if (contador == 0) {
                 for (int j = 0; j < casilleros; j++) {
+                    if(numListRegistro()==0){
+
+
                     if (matriz[i][j].equals("" + (i + 1) + "," + (j + 1) + "")) {
                         matriz[i][j] = nombre;
                         contador += 1;
                         break;
+                    }
+                    }else{
+                        if (matriz[i+1][j].equals("" + (i+1 + 1) + "," + (j + 1) + "")) {
+                            matriz[i+1][j] = nombre;
+                            contador += 1;
+                            break;
+                        }
+
                     }
                 }
             }
@@ -192,6 +203,29 @@ public class gimnasio {
             }
         }
 
+    }
+    public static int formula(){
+        int var1 = cubiculos;
+        int listnum = 0;
+
+        for (int i=0; i<listaE.size();i++){
+            listnum+=1;
+
+        }
+        int resultado = cubiculos/listnum;
+        return resultado;
+    }
+    public static int numListRegistro(){
+        int listnum = 0;
+
+        for (int i=0; i<=listaE.size();i++){
+            if (listaE.size()!=0){
+                listnum+=1;
+            }
+
+
+        }
+        return listnum;
     }
 }
 
